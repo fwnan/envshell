@@ -5,5 +5,5 @@
 https://fwnan.github.io/env-shell-server/maven.sh
 
 
-#npm  16.18
+#npm  18.12.1
 https://fwnan.github.io/env-shell-server/npm.sh
