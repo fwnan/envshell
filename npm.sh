@@ -4,8 +4,8 @@
 INSTALL_PATH="/usr/local/node"
 
 #Node版本信息
-DOWN_VSN="latest-v18.x/node-v18.12.1.tar.xz"
-NODE_VSN="node-v18.12.1"
+DOWN_VSN="latest-v18.x/node-v18.12.1-linux-x64.tar.xz"
+NODE_VSN="node-v18.12.1-linux-x64"
 
 #创建目录结构
 mkdir -p ${INSTALL_PATH}
