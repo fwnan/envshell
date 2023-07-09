@@ -3,11 +3,18 @@
 
 **bash <(curl -sSL https://fwnan.github.io/server-env-script/???.sh)**
 
+**java 17**
+
+https://fwnan.github.io/server-env-script/java.sh
+
 **maven 3.8.8**
+
 https://fwnan.github.io/sserver-env-script/maven.sh
 
 **npm  v20.4.0**
+
 https://fwnan.github.io/server-env-script/npm.sh
 
 **python  3.9.9**
+
 https://fwnan.github.io/server-env-script/python.sh
