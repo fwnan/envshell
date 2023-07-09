@@ -16,7 +16,7 @@ fi
 #下载Maven
 wget -P ${INSTALL_PATH} ${MAVEN_URL}
 #解压指定目录的maven压缩包
-tar -zxvf ${INSTALL_PATH}/${MAVEN_TAR} -C ${INSTALL_PATH}
+tar -zxvf ${INSTALL_PATH}/${MAVEN_TAR} -C ${INSTALL_PATH} > /dev/null 2>&1
 #移除下载包
 mv ${INSTALL_PATH}/${MAVEN_TAR} /dev/null
 
