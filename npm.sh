@@ -17,16 +17,18 @@ fi
 wget -P ${INSTALL_PATH} ${NODEJS_URL}
 
 cd ${INSTALL_PATH}
-#1.解压成tar 2.tar文件解压成文件夹
-xz -d ${NODE_NAME}.tar.xz && tar -xvf ${NODE_NAME}.tar
+#1.解压成tar 2.tar文件解压成文件夹. 静默解压
+xz -d ${NODE_NAME}.tar.xz > /dev/null 2>&1
+tar -xvf ${NODE_NAME}.tar > /dev/null 2>&1
 
-#删除压缩包
+#删除当前目录的压缩包
 find . -type f \( -name "*.tar" -o -name "*.xz" \) -delete
 
 #配置软链接,全局可用命令
 ln -sf ${INSTALL_PATH}/${NODE_NAME}/bin/node /usr/bin/node
 ln -sf ${INSTALL_PATH}/${NODE_NAME}/bin/npm /usr/bin/npm
 
+echo "===Node and Npm==="
 #查询node版本和npm版本
 node -v && npm -v
 #npm设置阿里镜像源(https://registry.npmjs.org)
