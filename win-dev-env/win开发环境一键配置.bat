@@ -12,7 +12,7 @@ echo [准备配置预设环境变量:Java,Maven,Node,Python,Git等]
 echo ==========================================================
 echo.
 ::用于重置恢复的环境变量
-set BASE_PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\gnef\AppData\Local\Microsoft\WindowsApps;
+set BASE_PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;C:\Users\admin\.dotnet\tools;C:\Users\admin\AppData\Local\GitHubDesktop\bin; 
 ::echo 默认用于重置的环境变量：%BASE_PATH%
 
 echo ==========================================================
@@ -20,12 +20,12 @@ echo [当前全局变量已被重置，准备写入预设环境变量......]
 echo ==========================================================
 setx /m PATH ""
 
-set JAVA=D:\developer\jdk20
-set MAVEN=D:\developer\maven3.8.7
-set NODEJS=D:\developer\nodejs
-set PYTHON=D:\developer\Python\Python310
-set GIT_TMP=D:\developer\Git
-set GIT=%GIT_TMP%\bin;%GIT_TMP%\mingw64\bin;%GIT_TMP%\mingw64\libexec\git-core	
+set JAVA=D:\dev\jdk21
+set MAVEN=D:\dev\maven3.8.7
+set NODEJS=D:\dev\nodejs
+set PYTHON=D:\dev\Python\Python310
+set GIT_TMP=D:\dev\Git
+set GIT=%GIT_TMP%\bin;%GIT_TMP%\mingw64\bin;%GIT_TMP%\mingw64\libexec\git-core
 
 ::直接覆盖同名全局变量
 setx /m JAVA_HOME %JAVA%
@@ -64,7 +64,7 @@ python --version
 node -v
 call mvn -v
 color 0a
-echo 环境配置结果输出完毕，检查配置是否有效=================================
+echo 环境配置结果输出完毕，检查配置是否有效===========================
 
 
 ::cmd /k  ping 192.168.1.1
