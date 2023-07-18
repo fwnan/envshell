@@ -9,7 +9,7 @@ https://fwnan.github.io/server-env-script/java.sh
 
 **maven 3.8.8**
 
-https://fwnan.github.io/sserver-env-script/maven.sh
+https://fwnan.github.io/server-env-script/maven.sh
 
 **npm  v20.4.0**
 
