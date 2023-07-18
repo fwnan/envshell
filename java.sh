@@ -18,8 +18,8 @@ fi
 wget -P ${INSTALL_PATH} ${JDK_URL}
 #静默解压
 tar -zxvf ${INSTALL_PATH}/${JDK_TAR} -C ${INSTALL_PATH} > /dev/null 2>&1
-#删除压缩包
-find . -type f \( -name "*.tar" -o -name "*.gz" \) -delete
+#删除${INSTALL_PATH}的压缩包
+find ${INSTALL_PATH} -type f \( -name "*.tar" -o -name "*.gz" \) -delete
 
 #重定向输出环境变量文件
 echo "export JAVA_HOME=${INSTALL_PATH}/${JDK_NAME}" >> /etc/profile
