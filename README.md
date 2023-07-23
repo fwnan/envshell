@@ -5,16 +5,16 @@
 
 **java 17**
 
-https://fwnan.github.io/server-env-script/java.sh
+https://fwnan.github.io/server-env-script/java17.sh
 
 **maven 3.8.8**
 
 https://fwnan.github.io/server-env-script/maven.sh
 
-**npm  v20.4.0**
+**nodejs(v20.4.0) and npm(9.7.2)**
 
-https://fwnan.github.io/server-env-script/npm.sh
+https://fwnan.github.io/server-env-script/nodejs.sh
 
-**python  3.9.9**
+**python 3.9.9**
 
-https://fwnan.github.io/server-env-script/python.sh
+https://fwnan.github.io/server-env-script/python3.9.sh
