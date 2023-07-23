@@ -18,7 +18,7 @@ fi
 cd ${INSTALL_PATH}
 
 #下载JDK
-wget -P ${JDK_URL}
+wget ${JDK_URL}
 #静默解压
 tar -zxvf ${JDK_TAR} > /dev/null 2>&1
 
