@@ -4,6 +4,7 @@
 **bash <(curl -sSL https://fwnan.github.io/server-env-script/???.sh)**
 
 **jdk**
+
 https://fwnan.github.io/server-env-script/jdk1.8.sh
 
 https://fwnan.github.io/server-env-script/jdk17.sh
