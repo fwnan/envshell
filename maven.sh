@@ -2,9 +2,9 @@
 #安装目录
 INSTALL_PATH="/opt/maven"
 #下载地址,压缩包,maven最终目录名
-MAVEN_URL="https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz"
-MAVEN_TAR="apache-maven-3.8.8-bin.tar.gz"
-MAVEN_DIR="apache-maven-3.8.8"
+MAVEN_URL="https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz"
+MAVEN_TAR="apache-maven-3.9.3-bin.tar.gz"
+MAVEN_DIR="apache-maven-3.9.3"
 
 #目录不存在,创建指定目录. 否则移除之前的Maven目录
 if [ ! -d "${INSTALL_PATH}" ]; then
