@@ -3,7 +3,7 @@
 #安装目录
 INSTALL_PATH="/opt/java"
 #下载地址,压缩包,JDK目录名
-JDK_URL="https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz"
+JDK_URL="https:/mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz"
 JDK_TAR="jdk-8u202-linux-x64.tar.gz"
 JDK_NAME="jdk8"
 
