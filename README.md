@@ -1,13 +1,15 @@
 # server-env-script
-选择要安装的脚本,以下列方式在线执行即可快速搭建相应环境
+选择要安装的脚本,运行下列代码, 即可在线执行, 即可快速搭建相应环境
 
 **bash <(curl -sSL https://fwnan.github.io/server-env-script/???.sh)**
 
 **jdk**
 
-https://fwnan.github.io/server-env-script/jdk1.8.sh
+https://fwnan.github.io/server-env-script/jdk8.sh
 
 https://fwnan.github.io/server-env-script/jdk17.sh
+
+https://fwnan.github.io/server-env-script/jdk21.sh
 
 **maven 3.8.8**
 
