@@ -3,8 +3,8 @@
 #安装目录. 注: /usr/local目录需要配置环境变量才有权限执行命令,最好选择/opt或者/usr
 INSTALL_PATH="/opt/nodejs"
 #下载地址, NODE最终安装名
-NODEJS_URL="https://registry.npmmirror.com/-/binary/node/v20.4.0/node-v20.4.0-linux-x64.tar.xz"
-NODE_NAME="node-v20.4.0-linux-x64"
+NODEJS_URL="https://mirrors.aliyun.com/nodejs-release/v20.10.0/node-v20.10.0-linux-x64.tar.xz"
+NODE_NAME="node-v20.10.0-linux-x64"
 
 #目录不存在,创建指定目录,否则移除
 if [ ! -d "${INSTALL_PATH}" ]; then
