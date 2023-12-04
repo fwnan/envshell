@@ -5,7 +5,7 @@ INSTALL_PATH="/opt/java"
 #下载地址,压缩包,JDK目录名
 JDK_URL="https://mirrors.huaweicloud.com/openjdk/21/openjdk-21_linux-x64_bin.tar.gz"
 JDK_TAR="openjdk-21_linux-x64_bin.tar.gz"
-JDK_NAME="jdk21"
+JDK_NAME="jdk-21"
 
 #目录不存在,创建指定目录,否则移除
 if [ ! -d "${INSTALL_PATH}" ]; then
