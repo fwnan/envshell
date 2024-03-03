@@ -4,6 +4,7 @@
 **bash <(curl -sSL https://fwnan.github.io/server-env-script/???.sh)**
 
 **jdk(8,17,21)**
+
 https://fwnan.github.io/server-env-script/jdk21.sh
 
 **maven 3.9.6**
