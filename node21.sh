@@ -18,7 +18,7 @@ wget -P ${appDir} ${getUrl} && tar -zxvf ${appDir}/${zipName} -C ${appDir} > /de
 rm ${appDir}/${zipName}
 
 #清理原有$PATH中的node记录
-export PATH=$(echo $PATH | tr ':' '\n' | grep -v "node" | tr '\n' ':' | sed 's/:$//')
+export PATH=$(echo $PATH | tr ':' '\n' | grep -v "/opt/nodejs" | tr '\n' ':' | sed 's/:$//')
 
 # 若配置过,直接替换为最新环境变量
 if grep -q "export NODEJS=" /etc/profile; then
