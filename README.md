@@ -11,9 +11,9 @@ https://fwnan.github.io/server-env-script/jdk21.sh
 
 https://fwnan.github.io/server-env-script/maven.sh
 
-**nodejs(v20.10.0) and npm(10.2.3)**
+**nodejs(v21.0.0) and npm(10.2.0)**
 
-https://fwnan.github.io/server-env-script/nodejs20.sh
+https://fwnan.github.io/server-env-script/node21.sh
 
 **python 3.9.9**
 
