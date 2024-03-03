@@ -1,5 +1,4 @@
 #!/bin/bash
-#/usr/local需要配置环境变量才有权限,最好选择/opt或者/usr
 appDir="/opt/java"
 getUrl="https://repo.huaweicloud.com/openjdk/17/openjdk-17_linux-x64_bin.tar.gz"
 zipName="openjdk-17_linux-x64_bin.tar.gz"
