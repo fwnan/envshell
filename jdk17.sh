@@ -16,7 +16,7 @@ wget -P ${appDir} ${getUrl} && tar -zxvf ${appDir}/${zipName} -C ${appDir} > /de
 rm ${appDir}/${zipName}
 
 #清理原有$PATH中的node记录
-export PATH=$(echo $PATH | tr ':' '\n' | grep -v "java" | tr '\n' ':' | sed 's/:$//')
+export PATH=$(echo $PATH | tr ':' '\n' | grep -v "/opt/java" | tr '\n' ':' | sed 's/:$//')
 
 exportPath="export PATH=\$JAVA_HOME/bin:\$PATH"
 
