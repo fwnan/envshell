@@ -1,10 +1,10 @@
 #!/bin/bash
-
 # install dir
 INSTALL_PATH="/opt/maven"
+PWD_DIR=$(pwd)
 
 # maven zip
-MAVEN_URL="https://archive.apache.org/dist/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz"
+MAVEN_URL="https://mirrors.aliyun.com/apache/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz"
 MAVEN_TAR="apache-maven-3.9.6-bin.tar.gz"
 MAVEN_DIR="apache-maven-3.9.6"
 
@@ -17,24 +17,32 @@ fi
 
 cd ${INSTALL_PATH} 
 
-#下载maven到安装目录, 原地解压
+# 下载maven到安装目录, 原地解压
 wget ${MAVEN_URL} && tar -zxvf ${MAVEN_TAR} -C ${INSTALL_PATH} > /dev/null 2>&1
-#wget -P ${INSTALL_PATH} ${MAVEN_URL} && tar -zxvf ${INSTALL_PATH}/${MAVEN_TAR} -C ${INSTALL_PATH} > /dev/null 2>&1
-#移除下载包
+# 移除压缩包
 rm ${MAVEN_TAR}
 
-#重定向输出环境变量文件
-echo "export MAVEN_HOME=${INSTALL_PATH}/${MAVEN_DIR}" >> /etc/profile
-echo "export PATH=\$PATH:\$MAVEN_HOME/bin" >> /etc/profile
+# 如果有MAVEN_HOME, 直接变更为新环境变量值
+if grep -q "export MAVEN_HOME=" /etc/profile; then
+    sed -i "s#\(export MAVEN_HOME=\).*#\1$INSTALL_PATH/$MAVEN_DIR#" /etc/profile
 
-#更新环境变量值
-sudo sed -i 's#\(export MAVEN_HOME=\).*#\1${INSTALL_PATH}/${MAVEN_DIR}#' /etc/profile
-
-#sudo sed -i 's/MAVEN_HOME=".*"/MAVEN_HOME="'"${INSTALL_PATH}/${MAVEN_DIR}"'"/g' /etc/source
-#sudo sed -i 's/PATH=".*"/PATH="'"$PATH:$MAVEN_HOME/bin"'"/g' /etc/source
+    ENV_MAVEN_PATH="export PATH=\$PATH:\$MAVEN_HOME/bin"
+    # 找不到PATH路径的MAVEN, 追加MAVEN_HOME到PATH路径中
+    if ! grep -q -x "$ENV_MAVEN_PATH" /etc/profile; then
+        # 匹配内容有路径/, 所以需要改用定界符
+        sed "\#export MAVEN_HOME=$INSTALL_PATH/$MAVEN_DIR#a ${ENV_MAVEN_PATH}" /etc/profile
+    fi
+else 
+    #初始搭建, 直接写入环境变量
+    echo "export MAVEN_HOME=${INSTALL_PATH}/${MAVEN_DIR}" >> /etc/profile
+    echo "export PATH=\$PATH:\$MAVEN_HOME/bin" >> /etc/profile
+fi
 
 #刷新环境变量
 source /etc/profile
-echo "==============MAVEN VERSION=============="
+echo "===================================== MAVEN VERSION INFO ====================================="
 mvn -v
+echo "=============================================================================================="
+cd $PWD_DIR
 bash
+
