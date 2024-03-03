@@ -8,8 +8,8 @@ echo -----------------------------------------------------------
 
 echo 配置默认的GIT用户信息,可自行定义用户名和邮箱====================
 ::设置全局GIT用户名以及邮箱
-git config --global user.name "gnef"
-git config --global user.email gnef@devok.io
+git config --global user.name "fwnan"
+git config --global user.email fwnan@github.io
 
 echo 查看GIT配置列表=============================================
 git config --global -l
