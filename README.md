@@ -1,7 +1,7 @@
 # envshell使用说明
 在终端中复制下面命令, 选择安装的环境脚本,直接在线执行
 
-**bash <(curl -sSL https://fwnan.github.io/envshell/xxxxxxxx.sh)**
+**bash <(curl -sSL https://fwnan.github.io/envshell/????.sh)**
 
 **jdk(8,17,21)**
 
