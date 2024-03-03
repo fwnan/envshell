@@ -1,39 +1,45 @@
 #!/bin/bash
+appDir="/opt/java"
+getUrl="https:/mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz"
+zipName="jdk-8u202-linux-x64.tar.gz"
+fileName="jdk8"
 
-#安装目录
-INSTALL_PATH="/opt/java"
-#下载地址,压缩包,JDK目录名
-JDK_URL="https:/mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz"
-JDK_TAR="jdk-8u202-linux-x64.tar.gz"
-JDK_NAME="jdk8"
-
-#目录不存在,创建指定目录,否则移除目录内容
-if [ ! -d "${INSTALL_PATH}" ]; then
-  mkdir -p ${INSTALL_PATH}
+# 路径不存在则新建,存在则清空数据
+if [ ! -d "${appDir}" ]; then
+  mkdir -p ${appDir}
 else
-  rm -rf ${INSTALL_PATH}/*
+  rm -rf ${appDir}/*
+fi
+# 下载到指定目录,静默解压
+wget -P ${appDir} ${getUrl} && tar -zxvf ${appDir}/${zipName} -C ${appDir} > /dev/null 2>&1
+# 移除压缩包
+rm ${appDir}/${zipName}
+
+#清理原有$PATH中的node记录
+export PATH=$(echo $PATH | tr ':' '\n' | grep -v "java" | tr '\n' ':' | sed 's/:$//')
+
+exportPath="export PATH=\$JAVA_HOME/bin:\$PATH"
+
+# 若配置过,直接替换为最新环境变量
+if grep -q "export JAVA_HOME=" /etc/profile; then
+    sed -i "s#\(export JAVA_HOME=\).*#\1$appDir/$fileName#" /etc/profile
+    # 没有export配置PATH则追加相应参数
+    exportPath="export PATH=\$JAVA_HOME/bin:\$PATH"
+    if ! grep -q -x "$exportPath" /etc/profile; then
+        # 匹配内容有路径/, 需改用定界符
+        sed "\#export JAVA_HOME=$appDir/$fileName#a $exportPath" /etc/profile
+    fi
+else 
+    #初次配置,直接写入环境变量
+    echo "export JAVA_HOME=$appDir/$fileName" >> /etc/profile
+    echo $exportPath >> /etc/profile
 fi
 
-#移动到空内容的安装目录
-cd ${INSTALL_PATH}
-
-#下载JDK
-wget ${JDK_URL}
-#静默解压
-tar -zxvf ${JDK_TAR} > /dev/null 2>&1
-
-#jdk解压目录改名
-mv jdk1.8.0_202 ${JDK_NAME}
-
-#删除${INSTALL_PATH}的压缩包
-find ${INSTALL_PATH} -type f \( -name "*.tar" -o -name "*.gz" \) -delete
-
-#重定向输出环境变量文件
-echo "export JAVA_HOME=${INSTALL_PATH}/${JDK_NAME}" >> /etc/profile
-echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> /etc/profile
-
-#刷新环境变量
+#环境变量生效
 source /etc/profile
+
+echo "=================================== JDK VERSION INFO ========================================="
 java -version
-#执行bash,让shell环境与外部linux一致
+echo "=============================================================================================="
+#Shell环境与外部一致
 bash
