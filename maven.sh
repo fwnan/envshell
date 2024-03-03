@@ -1,6 +1,5 @@
 #!/bin/bash
 INSTALL_PATH="/opt/maven"
-# maven zip
 MAVEN_URL="https://mirrors.aliyun.com/apache/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz"
 MAVEN_TAR="apache-maven-3.9.6-bin.tar.gz"
 MAVEN_DIR="apache-maven-3.9.6"
@@ -12,10 +11,10 @@ else
   rm -rf ${INSTALL_PATH}/*
 fi
 
-# 下载到安装目录,静默解压
-wget -P ${INSTALL_PATH}/${MAVEN_URL} && tar -zxvf ${INSTALL_PATH}/${MAVEN_TAR} -C ${INSTALL_PATH} > /dev/null 2>&1
+# 下载到指定目录,静默解压
+wget -P ${INSTALL_PATH} ${MAVEN_URL} && tar -zxvf ${INSTALL_PATH}/${MAVEN_TAR} -C ${INSTALL_PATH} > /dev/null 2>&1
 # 移除压缩包
-rm $INSTALL_PATH}/${MAVEN_TAR}
+rm ${INSTALL_PATH}/${MAVEN_TAR}
 
 #清理原有$PATH环境中的maven信息
 export PATH=$(echo $PATH | tr ':' '\n' | grep -v "maven" | tr '\n' ':' | sed 's/:$//')
