@@ -18,21 +18,22 @@ wget -P ${appDir} ${getUrl} && tar -zxvf ${appDir}/${zipName} -C ${appDir} > /de
 rm ${appDir}/${zipName}
 
 #清理原有$PATH中的node记录
-export PATH=$(echo $PATH | tr ':' '\n' | grep -v "/opt/nodejs/node" | tr '\n' ':' | sed 's/:$//')
+export PATH=$(echo $PATH | tr ':' '\n' | grep -v "/opt/node" | tr '\n' ':' | sed 's/:$//')
+
+exportPath="export PATH=\$NODEJS/bin:\$PATH"
 
 # 若配置过,直接替换为最新环境变量
 if grep -q "export NODEJS=" /etc/profile; then
     sed -i "s#\(export NODEJS=\).*#\1$appDir/$fileName#" /etc/profile
     # 没有export配置PATH则追加相应参数
-    exportPath="export PATH=\$NODEJS/bin:\$PATH"
     if ! grep -q -x "$exportPath" /etc/profile; then
         # 匹配内容有路径/, 需改用定界符
-        sed "\#export NODEJS=$appDir/$fileName#a ${ENV_MAVEN_PATH}" /etc/profile
+        sed "\#export NODEJS=$appDir/$fileName#a $exportPath" /etc/profile
     fi
 else 
     #初次配置,直接写入环境变量
     echo "export NODEJS=$appDir/$fileName" >> /etc/profile
-    echo "export PATH=\$NODEJS/bin:\$PATH" >> /etc/profile
+    echo $exportPath >> /etc/profile
 fi
 
 #环境变量生效
