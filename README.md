@@ -1,7 +1,7 @@
-# server-env-script
-选择要安装的脚本,运行下列代码, 即可在线执行, 即可快速搭建相应环境
+# server-env-script使用说明
+在终端中复制下面命令, 选择需要的环境脚本名称,直接在线执行
 
-**bash <(curl -sSL https://fwnan.github.io/server-env-script/???.sh)**
+**bash <(curl -sSL https://fwnan.github.io/server-env-script/xxxxxxxx.sh)**
 
 **jdk(8,17,21)**
 
