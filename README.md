@@ -11,7 +11,7 @@ https://fwnan.github.io/server-env-script/jdk17.sh
 
 https://fwnan.github.io/server-env-script/jdk21.sh
 
-**maven 3.8.8**
+**maven 3.9.6**
 
 https://fwnan.github.io/server-env-script/maven.sh
 
