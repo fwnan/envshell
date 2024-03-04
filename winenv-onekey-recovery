@@ -1,0 +1,67 @@
+# get Admin Auth
+if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    Exit
+}
+
+Write-Host "============== Save Path args info in oldPath.txt on Desktop ============"
+$desktop = [Environment]::GetFolderPath("Desktop")
+"$env:Path" + "`n" >> ${desktop}\oldPath.txt
+
+Write-Host "============== Configure Java,Maven,Node,Python and others =============="
+
+# run env path
+$dir = "D:\dev"
+$java = "${dir}\jdk21"
+$maven = "${dir}\apache-maven-3.9.6"
+$nodejs = "${dir}\nodejs"
+$python = "${dir}\Python\Python310"
+$go = "${dir}\go"
+$mingw = "${dir}\mingw64"
+$git = "${dir}\Git"
+
+# show dir
+Write-Host "$java |$maven |$nodejs |$python |$go |$git |$mingw"
+
+#Path Args
+$pJava = "JAVA_HOME"
+$pMaven = "MAVEN_HOME"
+$pNode = "NODEJS"
+$pPy = "PYTHON"
+$pGo = "GOROOT" 
+$pGit = "GIT"
+$pMINGW = "MINGW" 
+
+# 组合系统变量Path
+$appPath = ".;%${pJava}%\bin;%${pMaven}%\bin;%${pNode}%\;%${pPy}%\;%${pPy}%\Scripts;%${pGo}%\bin;%${pGit}%\bin;%${pMINGW}%\bin;"
+#Write-Host "appPath= $appPath`n"
+
+Write-Host "==========================     Setting System Env args     =========================="
+
+# setx更快, 替换: [Environment]::SetEnvironmentVariable($pJava, $java, "Machine")
+cmd.exe /c "setx /m $pJava $java"
+cmd.exe /c "setx /m $pMaven $maven"
+cmd.exe /c "setx /m $pNode $nodejs"
+cmd.exe /c "setx /m $pPy $python"
+cmd.exe /c "setx /m $pGo $go"
+cmd.exe /c "setx /m $pGit $git"
+cmd.exe /c "setx /m $pMINGW $mingw"
+
+
+# 提供两套环境变量. 默认使用最简方式进行组合. 若有特别需求, 自行添加
+# $sysPath="C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;C:\Users\admin\.dotnet\tools;C:\Users\admin\AppData\Local\GitHubDesktop\bin; "
+$sysPath = "%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;"
+$finalPath = "${appPath}${sysPath}"
+
+# [Environment]::SetEnvironmentVariable("Path", $finalPath, "Machine")设置PATH有BUG,只能在shell中找命令, CMD不识别. 所以采用 setx
+cmd.exe /c "setx /m PATH $finalPath"
+
+Write-Host "========================================= Env Checking ============================================"
+java --version
+mvn -v
+$rsNode = node -v; $rsNpm = npm -v; Write-Host "node=$rsNode ,npm=$rsNpm"
+python --version; python -m pip --version
+go version
+git --version
+gcc --version
+Read-Host "Press Enter any key to exit"
