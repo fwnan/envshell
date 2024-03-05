@@ -15,6 +15,6 @@ https://fwnan.github.io/envshell/maven.sh
 
 https://fwnan.github.io/envshell/node21.sh
 
-**python 3.9.9**
+**python 3.12.2**
 
-https://fwnan.github.io/envshell/python3.9.sh
+https://fwnan.github.io/envshell/python3.sh
