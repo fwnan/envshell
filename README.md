@@ -18,3 +18,9 @@ https://fwnan.github.io/envshell/node21.sh
 **python 3.12.2**
 
 https://fwnan.github.io/envshell/python3.sh
+
+
+**CI/CD Script,Java App Or Web App**
+
+wget https://fwnan.github.io/envshell/ciback.sh
+wget https://fwnan.github.io/envshell/cifront.sh
