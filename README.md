@@ -1,4 +1,4 @@
-# envshell使用说明
+# envshell使用说明(https://github.com/fwnan/envshell)
 在终端中复制下面命令, 选择安装的环境脚本,直接在线执行
 
 **bash <(curl -sSL https://fwnan.github.io/envshell/????.sh)**
