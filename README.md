@@ -30,3 +30,4 @@ wget https://fwnan.github.io/envshell/cifront.sh
 **Docker(Ubuntu/Centos)**
 
 https://fwnan.github.io/envshell/docker-ubuntu.sh
+https://fwnan.github.io/envshell/docker-centos.sh
