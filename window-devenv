@@ -47,10 +47,8 @@ cmd.exe /c "setx /m $pGo $go"
 cmd.exe /c "setx /m $pGit $git"
 cmd.exe /c "setx /m $pMINGW $mingw"
 
-
-# 提供两套环境变量. 默认使用最简方式进行组合. 若有特别需求, 自行添加
-# $sysPath="C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;C:\Users\admin\.dotnet\tools;C:\Users\admin\AppData\Local\GitHubDesktop\bin; "
-$sysPath = "%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;"
+# 提供最基础的系统环境参数，若需额外参数，自行添加
+$sysPath = "%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%SYSTEMROOT%\System32\OpenSSH\;"
 $finalPath = "${appPath}${sysPath}"
 
 # [Environment]::SetEnvironmentVariable("Path", $finalPath, "Machine")设置PATH有BUG,只能在shell中找命令, CMD不识别. 所以采用 setx
