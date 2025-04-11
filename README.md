@@ -11,9 +11,9 @@ https://fwnan.github.io/envshell/jdk21.sh
 
 https://fwnan.github.io/envshell/maven.sh
 
-**node(21.0.0) and npm(10.2.0)**
+**node(v22.14.0 LTS) and npm(10.9.2)**
 
-https://fwnan.github.io/envshell/node21.sh
+https://fwnan.github.io/envshell/node.sh
 
 **python 3.12.2**
 
