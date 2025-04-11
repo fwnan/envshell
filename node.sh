@@ -1,9 +1,8 @@
 #!/bin/bash
 #/usr/local需要配置环境变量才有权限,最好选择/opt或者/usr
 appDir="/opt/nodejs"
-#https://mirrors.aliyun.com/nodejs-release/v21.0.0/node-v21.0.0-linux-x64.tar.xz
-getUrl="https://registry.npmmirror.com/-/binary/node/latest/node-v21.0.0-linux-x64.tar.gz"
-fileName="node-v21.0.0-linux-x64"
+getUrl="https://mirrors.aliyun.com/nodejs-release/v22.14.0/node-v22.14.0-linux-x64.tar.gz"
+fileName="node-v22.14.0-linux-x64"
 zipName="$fileName.tar.gz"
 
 # 路径不存在则新建,存在则清空数据
